@@ -11,13 +11,15 @@ php:
   volumes:
     - ./code:/code
     - ./.data:/data
-  env_file:
-    - .env
-  links:
-    - db
+    env_file:
+      - .env
+    depends_on:
+      - db
+    links:
+      - db
 db:
   image: mysql:8.0
   ports:
     - "6603:3306"
   env_file:
-    - .env
+    - .env 
